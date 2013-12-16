@@ -1,0 +1,30 @@
+body {
+    background-color: #F4EDE3;
+    margin: 0px;
+    padding: 0px;
+}
+
+canvas, aside {
+    display: inline-block;
+    float: left;
+    margin-top: 18px;
+    margin-left: 18px;
+}
+
+textarea {
+    width: 300px;
+    height: 200px;
+}
+
+button#wow {
+    height: 30px;
+    width: 60px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-image: linear-gradient(to bottom, #000075 0%, #366FFF 100%);
+    cursor: pointer;
+    outline: none;
+    display: block;
+}
