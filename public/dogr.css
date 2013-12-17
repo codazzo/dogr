@@ -4,6 +4,10 @@ body {
     padding: 0px;
 }
 
+div.doge {
+    overflow: hidden;
+}
+
 canvas, aside {
     display: inline-block;
     float: left;
@@ -16,15 +20,27 @@ textarea {
     height: 200px;
 }
 
-button#wow {
+div.actions {
+    margin-top: 8px;
+    margin-left: 18px;
+}
+
+button {
     height: 30px;
-    width: 60px;
     border-radius: 5px;
     font-size: 18px;
     font-weight: bold;
     color: white;
-    background-image: linear-gradient(to bottom, #000075 0%, #366FFF 100%);
     cursor: pointer;
     outline: none;
     display: block;
+}
+
+button#wow {
+    width: 60px;
+    background-image: linear-gradient(to bottom, #000075 0%, #366FFF 100%);
+}
+button#download {
+    width: 200px;
+    background-image: linear-gradient(to bottom, #067000 0%, #58E848 100%);
 }

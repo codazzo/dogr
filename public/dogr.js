@@ -64,3 +64,7 @@ loadDoge(function(){
 prefillTextArea(providedLines);
 
 document.getElementById('wow').onclick = writeAllDogeContent;
+document.getElementById('download').onclick = function(){
+    var dataURL = canvas.toDataURL();
+    window.location.href = dataURL;
+}
