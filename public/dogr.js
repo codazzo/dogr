@@ -1,4 +1,4 @@
-var dogeImgURL = 'http://i.imgur.com/gGAEn7a.png'
+var dogeImgURL = '/doge.png'
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 var fontSize = 20;
