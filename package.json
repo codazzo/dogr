@@ -1,0 +1,26 @@
+{
+  "name": "dogr",
+  "version": "0.0.1",
+  "description": "wow such dogr - very shibe text generator",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codazzo/dogr.git"
+  },
+  "keywords": [
+    "dogr",
+    "doge",
+    "shibe"
+  ],
+  "author": "Antonio D'Ettole",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codazzo/dogr/issues"
+  },
+  "dependencies": {
+    "express": "~3.4.7"
+  }
+}
