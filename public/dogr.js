@@ -7,11 +7,12 @@ var imageWidth,
 var palette = ['darkcyan', 'turquoise', 'maroon', 'navy', 'red', 'green', 'fuchsia', 'crimson', 'indigo', 'yellow'];
 var img = new Image();
 
-function loadDoge(){
+function loadDoge(dogeLoadedCallback){
     img.onload = function(){
         imageWidth = canvas.width = img.width;
         imageHeight = canvas.height = img.height;
         ctx.drawImage(img, 0, 0, img.width, img.height);
+        dogeLoadedCallback();
     }
     img.src = dogeImgURL;
 }
@@ -39,16 +40,27 @@ function writeAllDogeContent(){
     textLines.forEach(addLineToCanvas);
 }
 
-function prefillTextArea(){
-    var lines = [
+function prefillTextArea(lines){
+    lines = lines || [
         'wow',
         'such sample',
         'much text',
         'very try long line example'
     ];
+
     document.getElementById('textarea').value = lines.join('\n');
 }
 
-loadDoge();
-prefillTextArea();
+var pathname = window.location.pathname;
+    providedLines = pathname.split('/')
+                .filter(function(token){ return token; })
+                .map(function(token){ return decodeURIComponent(token)});
+
+loadDoge(function(){
+    if(providedLines.length) {
+        writeAllDogeContent();
+    }
+});
+prefillTextArea(providedLines);
+
 document.getElementById('wow').onclick = writeAllDogeContent;
