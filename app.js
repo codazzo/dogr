@@ -1,14 +1,19 @@
 var express = require('express');
 var app = express();
 var fs = require('fs');
+var splitter = require('./lib/sentencesplitter.js');
+var exphbs  = require('express3-handlebars');
+
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
 
 app.get('*', function(req, res) {
-    fs.readFile('public/index.html', {encoding: 'utf8'}, function (err, data) {
-        if (err) throw err;
-        res.type('html');
-        res.send(data);
+    var splitLines = JSON.stringify(splitter.splitPath(req.url))
+    res.render('index', {
+        layout: false,
+        lines: splitLines
     });
 });
 

@@ -51,11 +51,6 @@ function prefillTextArea(lines){
     document.getElementById('textarea').value = lines.join('\n');
 }
 
-// var pathname = window.location.pathname;
-//     providedLines = pathname.split('/')
-//                 .filter(function(token){ return token; })
-//                 .map(function(token){ return decodeURIComponent(token)});
-
 loadDoge(function(){
     if(providedLines.length) {
         writeAllDogeContent();
