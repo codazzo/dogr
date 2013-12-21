@@ -1,8 +1,9 @@
+var fontName = 'Comic Sans MS, Sans';
 var fontSize = 20;
 var palette = ['darkcyan', 'turquoise', 'maroon', 'navy', 'red', 'green', 'fuchsia', 'crimson', 'indigo', 'yellow'];
 
 function initContext(ctx){
-    ctx.font = fontSize + "pt Comic Sans MS, Sans";
+    ctx.font =  fontSize + 'px ' + fontName;
     ctx.textAlign = "left";
     ctx.textBaseline = "top";
 }
@@ -10,10 +11,17 @@ function initContext(ctx){
 module.exports = function(options){
     var canvas = options.canvas,
         ctx = canvas.getContext('2d'),
+        font = options.font,
         dogeImgURL = options.imgURL,
         img = new options.imageClass(),
         imageWidth,
         imageHeight;
+
+    if (font) {
+        fontName = font.name;
+        console.log('Using font: ' + fontName);
+        ctx.addFont(font);
+    }
 
     img.onload = function(){
         imageWidth = canvas.width = img.width;
