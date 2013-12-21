@@ -11,7 +11,7 @@ module.exports = function(options){
     var canvas = options.canvas,
         ctx = canvas.getContext('2d'),
         dogeImgURL = options.imgURL,
-        img = new Image(),
+        img = new options.imageClass(),
         imageWidth,
         imageHeight;
 

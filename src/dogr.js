@@ -1,9 +1,10 @@
 var dogeImgURL = '/doge.png'
 var canvas = document.getElementById('canvas');
 
-var dogeCanvas = require('../public/dogeCanvas')({
+var dogeCanvas = require('./dogeCanvas')({
     callback: onDogeLoaded,
     imgURL: dogeImgURL,
+    imageClass: Image,
     canvas: canvas
 });
 
