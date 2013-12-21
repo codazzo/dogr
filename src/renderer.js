@@ -23,8 +23,9 @@ module.exports = function(req, res, next){
         cleanPath = url.split('.png')[0].split('jpg')[0]; //FIXME ugly
 
         splitLines = splitter.splitPath(cleanPath);
-
         dogeCanvas.addLines(splitLines);
+
+        res.type('png');
         res.send(canvas.toBuffer());
     } else {
         next();
