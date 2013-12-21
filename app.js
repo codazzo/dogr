@@ -3,11 +3,19 @@ var app = express();
 var fs = require('fs');
 var splitter = require('./lib/sentencesplitter.js');
 var exphbs  = require('express3-handlebars');
+var browserify = require('browserify');
 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
+
+app.get('/dogr.js', function(req, res){
+    console.log('wow');
+    var b = browserify();
+    b.add('./src/dogr.js');
+    b.bundle().pipe(res);
+});
 
 app.get('*', function(req, res) {
     var splitLines = JSON.stringify(splitter.splitPath(req.url))
