@@ -42,6 +42,7 @@ module.exports = function(options){
 
     return {
         addLines: function(lines){
+            initContext(ctx);
             ctx.drawImage(img, 0, 0, img.width, img.height); //clears the canvas
 
             lines.forEach(addLineToCanvas);
