@@ -4,11 +4,15 @@ var fs = require('fs');
 var splitter = require('./lib/sentencesplitter.js');
 var exphbs  = require('express3-handlebars');
 var browserify = require('browserify');
+var nodecanvas = require('canvas');
+var renderer = require('./src/renderer');
 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
+
+app.use(renderer);
 
 app.get('/dogr.js', function(req, res){
     console.log('wow');
