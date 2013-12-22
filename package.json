@@ -24,6 +24,7 @@
     "express": "~3.4.7",
     "express3-handlebars": "~0.5.0",
     "browserify": "~3.12.0",
-    "canvas": "~1.1.2"
+    "canvas": "~1.1.2",
+    "newrelic": "~1.2.0"
   }
 }
