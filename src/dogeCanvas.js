@@ -1,5 +1,5 @@
-var fontName = 'Comic Sans MS, Sans';
-var fontSize = 40;
+var fontName = 'Comic Sans MS, doge, Marker Felt, Sans';
+var fontSize = 30;
 var palette = ['darkcyan', 'turquoise', 'maroon', 'navy', 'red', 'green', 'fuchsia', 'crimson', 'indigo', 'yellow'];
 
 function initContext(ctx){

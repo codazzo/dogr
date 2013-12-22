@@ -25,6 +25,11 @@ div.actions {
     margin-left: 18px;
 }
 
+@font-face {
+    font-family: 'doge';
+    src: url('/dogeFont.ttf');
+}
+
 button {
     height: 30px;
     border-radius: 5px;
