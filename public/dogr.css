@@ -25,6 +25,17 @@ button#download {
     background-image: linear-gradient(to bottom, #067000 0%, #58E848 100%);
 }
 
+.tips {
+    margin-top: 20px;
+    font-family: "Arial";
+    background-size: 10px;
+    color: gray;
+}
+
+.tips a {
+    color: #4183c4;;
+}
+
 @font-face {
     font-family: 'doge';
     src: url('/dogeFont.ttf');
@@ -75,5 +86,8 @@ button#download {
         width: 100%;
         height: 80px;
         font-size: 40px;
+    }
+    .tips {
+        display: none;
     }
 }
