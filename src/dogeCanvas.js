@@ -33,7 +33,7 @@ module.exports = function(options){
         if (options.callback) {
             options.callback();
         }
-    }
+    };
 
     img.src = dogeImgURL;
 
@@ -55,5 +55,5 @@ module.exports = function(options){
 
             lines.forEach(addLineToCanvas);
         }
-    }
-}
+    };
+};

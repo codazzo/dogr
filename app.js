@@ -22,7 +22,7 @@ app.get('/dogr.js', function(req, res){
 });
 
 app.get('*', function(req, res) {
-    var splitLines = JSON.stringify(splitter.splitPath(req.url))
+    var splitLines = JSON.stringify(splitter.splitPath(req.url));
     res.render('index', {
         layout: false,
         lines: splitLines

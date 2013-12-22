@@ -1,4 +1,4 @@
-var dogeImgURL = '/doge.png'
+var dogeImgURL = '/doge.png';
 var canvas = document.getElementById('canvas');
 
 var dogeCanvas = require('./dogeCanvas')({
@@ -31,7 +31,7 @@ document.getElementById('wow').onclick = writeAllDogeContent;
 document.getElementById('download').onclick = function(){
     var dataURL = canvas.toDataURL();
     window.location.href = dataURL;
-}
+};
 
 function writeAllDogeContent(){
     var textLines = document.getElementById('textarea').value.split('\n');
