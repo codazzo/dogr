@@ -12,17 +12,17 @@ var dogeCanvas = require('./dogeCanvas')({
     font: dogeFont
 });
 
-var imgRegexp = /.*\.(png|jpg)$/;
+var imgRegexp = /(.*)\.(png|jpg)$/;
 
 module.exports = function(req, res, next){
     var url = req.url,
         cleanPath;
 
     if (imgRegexp.test(url)) {
-        console.log('image!');
-        cleanPath = url.split('.png')[0].split('jpg')[0]; //FIXME ugly
+        cleanPath = imgRegexp.exec(url)[1];
 
         splitLines = splitter.splitPath(cleanPath);
+
         dogeCanvas.addLines(splitLines);
 
         res.type('png');

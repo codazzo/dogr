@@ -15,14 +15,15 @@ app.use(express.static('public'));
 app.use(renderer);
 
 app.get('/dogr.js', function(req, res){
-    console.log('wow');
     var b = browserify();
     b.add('./src/dogr.js');
     b.bundle().pipe(res);
 });
 
 app.get('*', function(req, res) {
-    var splitLines = JSON.stringify(splitter.splitPath(req.url));
+    var splitLinesArray = splitter.splitPath(req.url),
+        splitLines = JSON.stringify(splitLinesArray.length ? splitLinesArray : ['wow', 'such sample', 'much text']);
+
     res.render('index', {
         layout: false,
         lines: splitLines

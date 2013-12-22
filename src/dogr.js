@@ -9,13 +9,6 @@ var dogeCanvas = require('./dogeCanvas')({
 });
 
 function prefillTextArea(lines){
-    lines = lines || [
-        'wow',
-        'such sample',
-        'much text',
-        'very try long line example'
-    ];
-
     document.getElementById('textarea').value = lines.join('\n');
 }
 
