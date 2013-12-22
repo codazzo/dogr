@@ -8,21 +8,21 @@ div.doge {
     overflow: hidden;
 }
 
-canvas, aside {
-    display: inline-block;
-    float: left;
-    margin-top: 18px;
-    margin-left: 18px;
-}
-
 textarea {
     width: 300px;
     height: 200px;
 }
 
-div.actions {
-    margin-top: 8px;
-    margin-left: 18px;
+button {
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+button#wow {
+    background-image: linear-gradient(to bottom, #000075 0%, #366FFF 100%);
+}
+button#download {
+    background-image: linear-gradient(to bottom, #067000 0%, #58E848 100%);
 }
 
 @font-face {
@@ -30,22 +30,50 @@ div.actions {
     src: url('/dogeFont.ttf');
 }
 
-button {
-    height: 30px;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-    cursor: pointer;
-    outline: none;
-    display: block;
+@media screen and (min-width: 700px) {
+  canvas, aside {
+    display: inline-block;
+    float: left;
+    margin-top: 18px;
+    margin-left: 18px;
+  }
+  button {
+      height: 30px;
+      border-radius: 5px;
+      font-size: 18px;
+      outline: none;
+      display: block;
+  }
+  button#wow {
+      width: 60px;
+  }
+  button#download {
+      width: 200px;
+  }
+  div.actions {
+      margin-top: 8px;
+      margin-left: 18px;
+  }
 }
 
-button#wow {
-    width: 60px;
-    background-image: linear-gradient(to bottom, #000075 0%, #366FFF 100%);
-}
-button#download {
-    width: 200px;
-    background-image: linear-gradient(to bottom, #067000 0%, #58E848 100%);
+@media screen and (max-width: 700px), (device-aspect-ratio: 2/3), (device-aspect-ratio: 40/71) {
+    body {
+        width: 600px;
+    }
+    canvas, aside {
+        display: block;
+        float: none;
+    }
+    .github-ribbon {
+        display: none;
+    }
+    textarea {
+        width: 100%;
+        font-size: 20px;
+    }
+    button {
+        width: 100%;
+        height: 80px;
+        font-size: 40px;
+    }
 }
