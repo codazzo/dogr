@@ -22,7 +22,7 @@ prefillTextArea(providedLines);
 
 document.getElementById('wow').onclick = writeAllDogeContent;
 document.getElementById('download').onclick = function(){
-    var dataURL = canvas.toDataURL();
+    var dataURL = canvas.toDataURL('image/jpeg');
     window.location.href = dataURL;
 };
 
