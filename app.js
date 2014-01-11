@@ -17,10 +17,16 @@ app.use(express.static('public'));
 
 require('./src/renderer')(app);
 
-app.get('/dogr.js', function(req, res){
-    var b = browserify();
+var b = browserify(),
+    dogrSrc;
+
     b.add('./src/dogr.js');
-    b.bundle().pipe(res);
+b.bundle(null, function(err, src){
+    dogrSrc = src;
+});
+
+app.get('/dogr.js', function(req, res){
+    res.send(dogrSrc);
 });
 
 app.get('*', function(req, res) {
