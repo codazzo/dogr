@@ -1,5 +1,6 @@
 var dogeImgURL = '/doge.png';
 var canvas = document.getElementById('canvas');
+var lastCanvasData;
 
 var dogeCanvas = require('./dogeCanvas')({
     callback: onDogeLoaded,
@@ -20,14 +21,32 @@ function onDogeLoaded(){
 
 prefillTextArea(providedLines);
 
-document.getElementById('wow').onclick = writeAllDogeContent;
-document.getElementById('download').onclick = function(){
+$('#download').click(function(){
     var dataURL = canvas.toDataURL('image/jpeg');
     window.location.href = dataURL;
-};
+});
+
+$('#wow').click(writeAllDogeContent);
 
 function writeAllDogeContent(){
     var textLines = document.getElementById('textarea').value.split('\n');
-
-    dogeCanvas.addLines(textLines);
+    lastCanvasData = dogeCanvas.addLines(textLines);
 }
+
+
+$('#imgur').click(function uploadToImgur(){
+    $.ajax({
+        url: '/upload',
+        type: 'POST',
+        headers: {
+            Accept: 'application/json'
+        },
+        data: {
+            data: lastCanvasData
+        },
+        success: function(result) {
+            // console.log('Image uploaded at ' + result.link + '. Delete hash: ' + result.deletehash);
+            window.location.href = result.link;
+        }
+    });
+});
