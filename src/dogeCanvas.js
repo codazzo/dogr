@@ -2,12 +2,6 @@ var fontName = 'Comic Sans MS, doge, Marker Felt, Sans';
 var fontSize = 30;
 var palette = ['darkcyan', 'turquoise', 'maroon', 'navy', 'red', 'green', 'fuchsia', 'crimson', 'indigo', 'yellow'];
 
-function initContext(ctx){
-    ctx.font =  fontSize + 'px ' + fontName;
-    ctx.textAlign = "left";
-    ctx.textBaseline = "top";
-}
-
 module.exports = function(options){
     var canvas = options.canvas,
         ctx = canvas.getContext('2d'),
@@ -16,6 +10,13 @@ module.exports = function(options){
         img = new options.imageClass(),
         imageWidth,
         imageHeight;
+
+    function initCanvas(){
+        ctx.drawImage(img, 0, 0, img.width, img.height); //clears the canvas
+        ctx.font =  fontSize + 'px ' + fontName;
+        ctx.textAlign = "left";
+        ctx.textBaseline = "top";
+    }
 
     if (font) {
         fontName = font.name;
@@ -26,9 +27,8 @@ module.exports = function(options){
     img.onload = function(){
         imageWidth = canvas.width = img.width;
         imageHeight = canvas.height = img.height;
-        ctx.drawImage(img, 0, 0, img.width, img.height);
 
-        initContext(ctx);
+        initCanvas();
 
         if (options.callback) {
             options.callback();
@@ -42,18 +42,34 @@ module.exports = function(options){
             xMax = imageWidth - textWidth,
             yMax = imageHeight - fontSize,
             xPos = Math.random() * xMax,
-            yPos = Math.random() * yMax;
+            yPos = Math.random() * yMax,
+            fillStyle = palette[Math.floor(( Math.random() * 1000 ) % palette.length)];
 
-        ctx.fillStyle = palette[Math.floor(( Math.random() * 1000 ) % palette.length)];
+        ctx.fillStyle = fillStyle;
         ctx.fillText(text, xPos, yPos);
+
+        return {
+            fillStyle: fillStyle,
+            text: text,
+            xPos: xPos,
+            yPos: yPos
+        }
     }
 
     return {
         addLines: function(lines){
-            initContext(ctx);
-            ctx.drawImage(img, 0, 0, img.width, img.height); //clears the canvas
+            initCanvas();
 
-            lines.forEach(addLineToCanvas);
+            return lines.map(addLineToCanvas);
+        },
+
+        fillCanvasFromData: function(dataArray){
+            initCanvas();
+
+            dataArray.forEach(function(data){
+                ctx.fillStyle = data.fillStyle;
+                ctx.fillText(data.text, parseFloat(data.xPos, 10), parseFloat(data.yPos, 10));
+            });
         }
     };
 };
