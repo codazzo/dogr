@@ -43,6 +43,10 @@ button#imgur {
     color: #4183c4;;
 }
 
+footer {
+  margin-left: 18px;
+}
+
 @font-face {
     font-family: 'doge';
     src: url('/dogeFont.ttf');
