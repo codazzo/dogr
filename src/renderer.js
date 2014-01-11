@@ -14,20 +14,24 @@ var dogeCanvas = require('./dogeCanvas')({
 
 var imgRegexp = /(.*)\.(png|jpg)$/;
 
-module.exports = function(req, res, next){
+module.exports = function(app){
+    app.get(imgRegexp, function(req, res, next){
     var url = req.url,
-        cleanPath;
-
-    if (imgRegexp.test(url)) {
-        cleanPath = imgRegexp.exec(url)[1];
-
+            cleanPath = imgRegexp.exec(url)[1],
+            stream,
+            type = imgRegexp.exec(url)[2],
         splitLines = splitter.splitPath(cleanPath);
 
         dogeCanvas.addLines(splitLines);
 
-        res.type('png');
-        res.send(canvas.toBuffer());
-    } else {
-        next();
+        if (type === 'jpg') {
+            stream = canvas.createJPEGStream({
+                quality: 90
+            });
+        } else if (type === 'png') {
+            stream = canvas.pngStream();
     }
+
+        stream.pipe(res);
+    });
 };

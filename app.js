@@ -7,14 +7,15 @@ var splitter = require('./lib/sentencesplitter.js');
 var exphbs  = require('express3-handlebars');
 var browserify = require('browserify');
 var nodecanvas = require('canvas');
-var renderer = require('./src/renderer');
+
+app.use(express.bodyParser());
 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
 
-app.use(renderer);
+require('./src/renderer')(app);
 
 app.get('/dogr.js', function(req, res){
     var b = browserify();
