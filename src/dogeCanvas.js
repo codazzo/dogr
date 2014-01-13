@@ -9,7 +9,8 @@ module.exports = function(options){
         dogeImgURL = options.imgURL,
         img = new options.imageClass(),
         imageWidth,
-        imageHeight;
+        imageHeight,
+        lineSectionHeight; // height available to a single line
 
     function initCanvas(){
         ctx.drawImage(img, 0, 0, img.width, img.height); //clears the canvas
@@ -37,12 +38,12 @@ module.exports = function(options){
 
     img.src = dogeImgURL;
 
-    function addLineToCanvas (text){
+    function addLineToCanvas (text, lineIndex){
         var textWidth = ctx.measureText(text).width,
             xMax = imageWidth - textWidth,
-            yMax = imageHeight - fontSize,
+            yMin = lineIndex * lineSectionHeight,
             xPos = Math.random() * xMax,
-            yPos = Math.random() * yMax,
+            yPos = yMin + Math.random() * (lineSectionHeight - fontSize),
             fillStyle = palette[Math.floor(( Math.random() * 1000 ) % palette.length)];
 
         ctx.fillStyle = fillStyle;
@@ -59,7 +60,8 @@ module.exports = function(options){
     return {
         addLines: function(lines){
             initCanvas();
-
+            // Divide the image into vertical 'sections' so lines don't overlap
+            lineSectionHeight = imageHeight / lines.length;
             return lines.map(addLineToCanvas);
         },
 
