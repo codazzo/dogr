@@ -53,6 +53,30 @@ footer {
     src: url('/dogeFont.ttf');
 }
 
+.share-buttons {
+  display: table;
+}
+
+.share {
+  text-align: center;
+  display: inline-block;  
+  color: #fff;
+  width: 18px;
+  height: 18px;
+}
+  .share.facebook {
+    background-color: #305891;
+  }
+  .share.twitter {
+    background-color: #2CA8D2;
+  }
+  .share.google-plus {
+    background-color: #CF4B35;
+  }
+  .share.tumblr {
+    background-color: #37475D;
+  }
+
 @media screen and (min-width: 700px) {
   canvas, aside {
     display: inline-block;
@@ -83,6 +107,19 @@ footer {
   }
   .imgur-text {
     display: none;
+  }
+  .share-buttons {
+    position: absolute;
+    right: 0;
+    top: 40%;
+  }
+  .share {
+    display: block;
+    padding: 12px;
+    cursor: pointer;
+  }
+  .share:hover {
+    text-shadow: 0px 1px 20px #444;
   }
 }
 
@@ -115,5 +152,13 @@ footer {
     .imgur-text {
       display: inline;
     }
-
+    .share-buttons {
+      display: none; /* disable sharing on mobile for now */
+      width: 100%;
+    }
+    .share {
+      display: table-cell;
+      font-size: 30px;
+      padding: 40px;
+    }
 }

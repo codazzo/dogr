@@ -50,3 +50,40 @@ $('#imgur').click(function uploadToImgur(){
         }
     });
 });
+
+$('.share').click(function(){
+    var popup = {
+            width: 500,
+            height: 350
+        },
+        sharedUrl = 'http://www.dogr.io',
+        sharedMsg = 'wow. much doge. such generator.',
+        popupUrl,
+        openOptions;
+
+    popup.top = (screen.height/2) - (popup.height/2);
+    popup.left = (screen.width/2) - (popup.width/2);
+
+    openOptions = [
+        "toolbar=no",
+        "location=no",
+        "status=no",
+        "menubar=no",
+        "scrollbars=yes",
+        "resizable=yes",
+        "left=" + popup.left,
+        "top=" + popup.top,
+        "width=" + popup.width,
+        "height=" + popup.height
+    ].join(',');
+
+    if ($(this).is('.facebook')) {
+        popupUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + sharedUrl;
+    } else if ($(this).is('.twitter')) {
+        popupUrl = 'http://twitter.com/intent/tweet?text=' + sharedMsg + '&url=' + sharedUrl;
+    } else if ($(this).is('.google-plus')) {
+        popupUrl = 'https://plus.google.com/share?url=' + sharedUrl;
+    }
+
+    window.open(popupUrl, 'targetWindow', openOptions);
+});
