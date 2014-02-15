@@ -59,7 +59,8 @@ $('.share').click(function(){
         sharedUrl = 'http://www.dogr.io',
         sharedMsg = 'wow. much doge. such generator.',
         popupUrl,
-        openOptions;
+        openOptions,
+        shareType;
 
     popup.top = (screen.height/2) - (popup.height/2);
     popup.left = (screen.width/2) - (popup.width/2);
@@ -79,11 +80,16 @@ $('.share').click(function(){
 
     if ($(this).is('.facebook')) {
         popupUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + sharedUrl;
+        shareType = 'facebook';
     } else if ($(this).is('.twitter')) {
         popupUrl = 'http://twitter.com/intent/tweet?text=' + sharedMsg + '&url=' + sharedUrl;
+        shareType = 'twitter';
     } else if ($(this).is('.google-plus')) {
         popupUrl = 'https://plus.google.com/share?url=' + sharedUrl;
+        shareType = 'google-plus';
     }
 
     window.open(popupUrl, 'targetWindow', openOptions);
+
+    ga('send', 'event', 'share-button', 'click', shareType, popupUrl);
 });
