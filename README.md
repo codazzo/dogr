@@ -8,3 +8,6 @@
 
 ##such service.
 [http://dogr.io/wow/sosmart/verytextdetection/soservice.png](http://dogr.io/wow/sosmart/verytextdetection.png)
+
+##many manual.
+[http://dogr.io/wow/many%20manual/such%20choice/doge%20multi%20use.png?split=false](http://dogr.io/wow/many%20manual/such%20choice/doge%20multi%20use.png?split=false)
