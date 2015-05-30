@@ -2,14 +2,16 @@
 
 var splitter = require('../lib/sentencesplitter.js');
 var serverCanvas = require('../src/serverCanvas');
-var imgRegexp = /(.*)\.(png|jpg)$/;
+var imgRegexp = /(.+)\.(png|jpg)$/;
 
 module.exports = function(app){
     app.get(imgRegexp, function(req, res){
-        var url = req.url;
-        var cleanPath = imgRegexp.exec(url)[1];
-        var type = imgRegexp.exec(url)[2];
-        var splitLines = splitter.splitPath(cleanPath);
+        var path = req.path;
+        var segments = imgRegexp.exec(path)[1];
+        var type = imgRegexp.exec(path)[2];
+        var splitLines = splitter.splitPath(segments, {
+            dontSplitWords: req.query.split === 'false'
+        });
 
         serverCanvas.addLines(splitLines);
         serverCanvas.stream(type).pipe(res);
