@@ -12,6 +12,12 @@ module.exports = function(app){
         var splitLines = splitter.splitPath(segments, {
             dontSplitWords: req.query.split === 'false'
         });
+        var mimes = {'png': 'image/png', 'jpg': 'image/jpeg'};
+        var ext = path.substr(-3);
+
+        res.set({
+            'Content-Type': mimes[ext] || 'application/octet-stream'
+        });
 
         serverCanvas.addLines(splitLines);
         serverCanvas.stream(type).pipe(res);
